@@ -1,6 +1,9 @@
 package com.adrian.airhockey1;
 
+import android.content.Context;
 import android.opengl.GLSurfaceView;
+
+import com.adrian.airhockey1.util.TextResourceReader;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -23,8 +26,10 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
     private static final int POSITION_COMPONENT_COUNT = 2;
     private static final int BYTES_PER_FLOAT = 4;
     private FloatBuffer vertexData;
+    private Context context;
 
-    public AirHockeyRender() {
+    public AirHockeyRender(Context context) {
+        this.context = context;
         float[] tableVertices = {
                 //Triangle1
                 0f, 0f,
@@ -54,6 +59,8 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         glClearColor(1.0f, 0.0f, 1.0f, .0f);
+        String vertexShaderSource = TextResourceReader.readTextFileFromResource(context, R.raw.simple_vertex_shader);
+        String fragmentShaderSource = TextResourceReader.readTextFileFromResource(context, R.raw.simple_fragment_shader);
     }
 
     @Override
