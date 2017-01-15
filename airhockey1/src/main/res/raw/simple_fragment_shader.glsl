@@ -1,5 +1,3 @@
-#version 120
-
 precision mediump float;
 
 uniform vec4 u_Color;
