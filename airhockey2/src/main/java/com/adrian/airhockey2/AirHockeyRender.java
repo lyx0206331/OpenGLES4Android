@@ -45,21 +45,39 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
     public AirHockeyRender(Context context) {
         this.context = context;
         float[] tableVertices = {
-                //Triangle1
-                0f, 0f,
-                -0.5f, -0.5f,
-                0.5f, -0.5f,
-                0.5f, 0.5f,
-                -0.5f, 0.5f,
-                -0.5f, -0.5f
+//                //Triangle Fan
+//                0f, 0f,
+//                -0.5f, -0.5f,
+//                0.5f, -0.5f,
+//                0.5f, 0.5f,
+//                -0.5f, 0.5f,
+//                -0.5f, -0.5f,
+//
+//                //center line
+//                -0.5f, 0f,
+//                0.5f, 0f,
+//
+//                //Mallets
+//                0f, -0.25f,
+//                0f, 0.25f
+
+                //Order of coordinates:x,y,r,g b
+
+                //Triangle Fan
+                0f, 0f, 1f, 1f, 1f,
+                -.5f, -.5f, .7f, .7f, .7f,
+                .5f, -.5f, .7f, .7f, .7f,
+                .5f, .5f, .7f, .7f, .7f,
+                -.5f, .5f, .7f, .7f, .7f,
+                -.5f, -.5f, .7f, .7f, .7f,
 
                 //center line
-                -0.5f, 0f,
-                0.5f, 0f,
+                -0.5f, 0f, 1f, 0f, 0f,
+                0.5f, 0f, 1f, 0f, 0f,
 
                 //Mallets
-                0f, -0.25f,
-                0f, 0.25f
+                0f, -0.25f, 0f, 0f, 1f,
+                0f, 0.25f, 1f, 0f, 0f
         };
 
         vertexData = ByteBuffer.allocateDirect(tableVertices.length * BYTES_PER_FLOAT)
