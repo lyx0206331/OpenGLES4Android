@@ -14,11 +14,7 @@ import java.nio.FloatBuffer;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import static android.opengl.GLES20.GL_COLOR_BUFFER_BIT;
-import static android.opengl.GLES20.GL_FLOAT;
-import static android.opengl.GLES20.GL_LINES;
-import static android.opengl.GLES20.GL_POINTS;
-import static android.opengl.GLES20.GL_TRIANGLES;
+import static android.opengl.GLES20.*;
 import static android.opengl.GLES20.glClear;
 import static android.opengl.GLES20.glClearColor;
 import static android.opengl.GLES20.glDrawArrays;
@@ -49,23 +45,13 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
     public AirHockeyRender(Context context) {
         this.context = context;
         float[] tableVertices = {
-                -0.51f, -0.51f,
-                0.51f, 0.51f,
-                -0.51f, 0.51f,
-
-                -0.51f, -0.51f,
-                0.51f, -0.51f,
-                0.51f, 0.51f,
-
                 //Triangle1
-                -0.5f, -0.5f,
-                0.5f, 0.5f,
-                -0.5f, 0.5f,
-
-                //Triangle2
+                0f, 0f,
                 -0.5f, -0.5f,
                 0.5f, -0.5f,
                 0.5f, 0.5f,
+                -0.5f, 0.5f,
+                -0.5f, -0.5f
 
                 //center line
                 -0.5f, 0f,
@@ -116,22 +102,18 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
     public void onDrawFrame(GL10 gl) {
         glClear(GL_COLOR_BUFFER_BIT);
 
-        //绘制外边框
-        glUniform4f(uColorLocation, 0.0f, 1.0f, 0.0f, 1.0f);
-        glDrawArrays(GL_TRIANGLES, 0, 6);
-
         //绘制桌面
         glUniform4f(uColorLocation, 1.0f, 1.0f, 1.0f, 1.0f);
-        glDrawArrays(GL_TRIANGLES, 6, 6);
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 6);
 
         //绘制分隔线
         glUniform4f(uColorLocation, 1.0f, 0.0f, 0.0f, 1.0f);
-        glDrawArrays(GL_LINES, 12, 2);
+        glDrawArrays(GL_LINES, 6, 2);
 
         //绘制木锤
         glUniform4f(uColorLocation, 0.0f, 0.0f, 1.0f, 1.0f);
-        glDrawArrays(GL_POINTS, 14, 1);
+        glDrawArrays(GL_POINTS, 8, 1);
         glUniform4f(uColorLocation, 1.0f, 0.0f, 0.0f, 1.0f);
-        glDrawArrays(GL_POINTS, 15, 1);
+        glDrawArrays(GL_POINTS, 9, 1);
     }
 }
