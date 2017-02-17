@@ -37,10 +37,15 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
     private FloatBuffer vertexData;
     private Context context;
     private int program;
-    private static final String U_COLOR = "u_Color";
-    private int uColorLocation;
+    //    private static final String U_COLOR = "u_Color";
+//    private int uColorLocation;
     private static final String A_POSITION = "a_Position";
     private int aPositionLocation;
+
+    private static final String A_COLOR = "a_Color";
+    private static final int COLOR_COMPONENT_COUNT = 3;
+    private static final int STRIDE = (POSITION_COMPONENT_COUNT + COLOR_COMPONENT_COUNT) * BYTES_PER_FLOAT; //跨距。告之Opengl每个位置或者颜色之间有多少个字节，即需要跳过多少
+    private int aColorLocation;
 
     public AirHockeyRender(Context context) {
         this.context = context;
@@ -102,13 +107,17 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
 
         glUseProgram(program);
 
-        uColorLocation = glGetUniformLocation(program, U_COLOR);
+        aColorLocation = glGetAttribLocation(program, A_COLOR);
         aPositionLocation = glGetAttribLocation(program, A_POSITION);
 
         vertexData.position(0);
-        glVertexAttribPointer(aPositionLocation, POSITION_COMPONENT_COUNT, GL_FLOAT, false, 0, vertexData);
+        glVertexAttribPointer(aPositionLocation, POSITION_COMPONENT_COUNT, GL_FLOAT, false, STRIDE, vertexData);
 
         glEnableVertexAttribArray(aPositionLocation);
+
+        vertexData.position(POSITION_COMPONENT_COUNT);
+        glVertexAttribPointer(aColorLocation, COLOR_COMPONENT_COUNT, GL_FLOAT, false, STRIDE, vertexData);
+        glEnableVertexAttribArray(aColorLocation);
     }
 
     @Override
@@ -121,17 +130,13 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
         glClear(GL_COLOR_BUFFER_BIT);
 
         //绘制桌面
-        glUniform4f(uColorLocation, 1.0f, 1.0f, 1.0f, 1.0f);
         glDrawArrays(GL_TRIANGLE_FAN, 0, 6);
 
         //绘制分隔线
-        glUniform4f(uColorLocation, 1.0f, 0.0f, 0.0f, 1.0f);
         glDrawArrays(GL_LINES, 6, 2);
 
         //绘制木锤
-        glUniform4f(uColorLocation, 0.0f, 0.0f, 1.0f, 1.0f);
         glDrawArrays(GL_POINTS, 8, 1);
-        glUniform4f(uColorLocation, 1.0f, 0.0f, 0.0f, 1.0f);
         glDrawArrays(GL_POINTS, 9, 1);
     }
 }
