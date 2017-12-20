@@ -42,7 +42,9 @@ public class ShaderHelper {
     private static int compileShader(int type, String shaderCode) {
         final int shaderObjectId = glCreateShader(type);
         if (shaderObjectId == 0) {
-            LogW(TAG, "Could not create new shader!");
+            if (LoggerConfig.ON) {
+                LogW(TAG, "Could not create new shader!");
+            }
             return 0;
         }
         glShaderSource(shaderObjectId, shaderCode);
@@ -50,12 +52,16 @@ public class ShaderHelper {
 
         final int[] compileStatus = new int[1];
         glGetShaderiv(shaderObjectId, GL_COMPILE_STATUS, compileStatus, 0);
-        LogV(TAG, "Results of compiling source:" + "\n" + shaderCode + "\n:" + glGetShaderInfoLog(shaderObjectId));
+        if (LoggerConfig.ON) {
+            LogV(TAG, "Results of compiling source:" + "\n" + shaderCode + "\n:" + glGetShaderInfoLog(shaderObjectId));
+        }
 
         if (compileStatus[0] == 0) {
             glDeleteShader(shaderObjectId);
 
-            LogW(TAG, "Compilation of shader failed.");
+            if (LoggerConfig.ON) {
+                LogW(TAG, "Compilation of shader failed.");
+            }
             return 0;
         }
         return shaderObjectId;
@@ -65,7 +71,9 @@ public class ShaderHelper {
         final int programObjectId = glCreateProgram();
 
         if (programObjectId == 0) {
-            LogW(TAG, "Could not create new program");
+            if (LoggerConfig.ON) {
+                LogW(TAG, "Could not create new program");
+            }
             return 0;
         }
 
@@ -75,17 +83,27 @@ public class ShaderHelper {
         glLinkProgram(programObjectId); //链接程序
         final int[] linkStatus = new int[1];
         glGetProgramiv(programObjectId, GL_LINK_STATUS, linkStatus, 0);
-        LogV(TAG, "results of linking program:\n" + glGetProgramInfoLog(programObjectId));
+        if (LoggerConfig.ON) {
+            LogV(TAG, "results of linking program:\n" + glGetProgramInfoLog(programObjectId));
+        }
 
         if (linkStatus[0] == 0) {
             glDeleteProgram(programObjectId);
-            LogW(TAG, "linking of program failed!");
+            if (LoggerConfig.ON) {
+                LogW(TAG, "linking of program failed!");
+            }
             return 0;
         }
 
         return programObjectId;
     }
 
+    /**
+     * 验证状态是否低效率或者无法运行
+     *
+     * @param programObjectId
+     * @return
+     */
     public static boolean validateProgram(int programObjectId) {
         glValidateProgram(programObjectId);
         final int[] validateStatus = new int[1];
