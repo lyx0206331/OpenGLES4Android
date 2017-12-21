@@ -46,6 +46,7 @@ public class ShaderHelper {
                 LogW(TAG, "Could not create new shader!");
             }
             return 0;
+
         }
         glShaderSource(shaderObjectId, shaderCode);
         glCompileShader(shaderObjectId);

@@ -49,6 +49,7 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
     public AirHockeyRender(Context context) {
         this.context = context;
         float[] tableVertices = {
+                //border
                 -0.51f, -0.51f,
                 0.51f, 0.51f,
                 -0.51f, 0.51f,
@@ -73,7 +74,15 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
 
                 //Mallets
                 0f, -0.25f,
-                0f, 0.25f
+                0f, 0.25f,
+
+                //ball
+                -0.2f, -0.2f,
+                0.2f, 0.2f,
+                -0.2f, 0.2f,
+                -0.2f, -0.2f,
+                0.2f, -0.2f,
+                0.2f, 0.2f
         };
 
         vertexData = ByteBuffer.allocateDirect(tableVertices.length * BYTES_PER_FLOAT)
@@ -133,5 +142,9 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
         glDrawArrays(GL_POINTS, 14, 1);
         glUniform4f(uColorLocation, 1.0f, 0.0f, 0.0f, 1.0f);
         glDrawArrays(GL_POINTS, 15, 1);
+
+        //绘制冰球
+        glUniform4f(uColorLocation, .5f, .5f, .5f, 1.0f);
+        glDrawArrays(GL_TRIANGLES, 16, 6);
     }
 }
