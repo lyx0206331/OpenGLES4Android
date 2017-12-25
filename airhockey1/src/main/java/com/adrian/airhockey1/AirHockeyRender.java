@@ -77,12 +77,12 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
                 0f, 0.25f,
 
                 //ball
-                -0.2f, -0.2f,
-                0.2f, 0.2f,
-                -0.2f, 0.2f,
-                -0.2f, -0.2f,
-                0.2f, -0.2f,
-                0.2f, 0.2f
+                -0.05f, -0.025f,
+                0.05f, 0.025f,
+                -0.05f, 0.025f,
+                -0.05f, -0.025f,
+                0.05f, -0.025f,
+                0.05f, 0.025f
         };
 
         vertexData = ByteBuffer.allocateDirect(tableVertices.length * BYTES_PER_FLOAT)

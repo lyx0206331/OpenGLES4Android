@@ -71,9 +71,13 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
                 //Triangle Fan
                 0f, 0f, 1f, 1f, 1f,
                 -.5f, -.5f, .7f, .7f, .7f,
+//                0f, -.5f, .7f, .7f, .7f,
                 .5f, -.5f, .7f, .7f, .7f,
+//                .5f, 0f, .7f, .7f, .7f,
                 .5f, .5f, .7f, .7f, .7f,
+//                0f, .5f, .7f, .7f, .7f,
                 -.5f, .5f, .7f, .7f, .7f,
+//                -.5f, 0f, .7f, .7f, .7f,
                 -.5f, -.5f, .7f, .7f, .7f,
 
                 //center line
@@ -131,12 +135,16 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
 
         //绘制桌面
         glDrawArrays(GL_TRIANGLE_FAN, 0, 6);
+//        glDrawArrays(GL_TRIANGLE_FAN, 0, 10);
 
         //绘制分隔线
         glDrawArrays(GL_LINES, 6, 2);
+//        glDrawArrays(GL_LINES, 10, 2);
 
         //绘制木锤
         glDrawArrays(GL_POINTS, 8, 1);
         glDrawArrays(GL_POINTS, 9, 1);
+//        glDrawArrays(GL_POINTS, 12, 1);
+//        glDrawArrays(GL_POINTS, 13, 1);
     }
 }
