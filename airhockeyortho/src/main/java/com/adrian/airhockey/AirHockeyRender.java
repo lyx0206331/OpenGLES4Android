@@ -24,6 +24,7 @@ import static android.opengl.GLES20.glClearColor;
 import static android.opengl.GLES20.glDrawArrays;
 import static android.opengl.GLES20.glEnableVertexAttribArray;
 import static android.opengl.GLES20.glGetAttribLocation;
+import static android.opengl.GLES20.glGetUniformLocation;
 import static android.opengl.GLES20.glUseProgram;
 import static android.opengl.GLES20.glVertexAttribPointer;
 import static android.opengl.GLES20.glViewport;
@@ -34,6 +35,9 @@ import static android.opengl.GLES20.glViewport;
 
 public class AirHockeyRender implements GLSurfaceView.Renderer {
 
+    private static final String U_MATRIX = "u_Matrix";
+    private final float[] projectionMatrix = new float[16];
+    private int uMatrixLocation;
     private static final int POSITION_COMPONENT_COUNT = 2;
     private static final int BYTES_PER_FLOAT = 4;
     private FloatBuffer vertexData;
@@ -124,6 +128,8 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
         vertexData.position(POSITION_COMPONENT_COUNT);
         glVertexAttribPointer(aColorLocation, COLOR_COMPONENT_COUNT, GL_FLOAT, false, STRIDE, vertexData);
         glEnableVertexAttribArray(aColorLocation);
+
+        uMatrixLocation = glGetUniformLocation(program, U_MATRIX);
     }
 
     @Override
