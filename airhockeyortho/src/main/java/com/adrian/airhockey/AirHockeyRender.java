@@ -1,7 +1,9 @@
 package com.adrian.airhockey;
 
 import android.content.Context;
+import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
+import android.opengl.Matrix;
 
 import com.adrian.airhockey.util.LoggerConfig;
 import com.adrian.airhockey.util.ShaderHelper;
@@ -135,6 +137,14 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
         glViewport(0, 0, width, height);
+
+        final float aspectRatio = width > height ? (float) width / (float) height : (float) height / (float) width;
+
+        if (width > height) { //landscape
+            Matrix.orthoM(projectionMatrix, 0, -aspectRatio, aspectRatio, -1f, 1f, -1f, 1f);
+        } else {    //portrait or square
+            Matrix.orthoM(projectionMatrix, 0, -1f, 1f, -aspectRatio, aspectRatio, -1f, 1f);
+        }
     }
 
     @Override
