@@ -27,6 +27,7 @@ import static android.opengl.GLES20.glDrawArrays;
 import static android.opengl.GLES20.glEnableVertexAttribArray;
 import static android.opengl.GLES20.glGetAttribLocation;
 import static android.opengl.GLES20.glGetUniformLocation;
+import static android.opengl.GLES20.glUniformMatrix4fv;
 import static android.opengl.GLES20.glUseProgram;
 import static android.opengl.GLES20.glVertexAttribPointer;
 import static android.opengl.GLES20.glViewport;
@@ -78,23 +79,19 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
 
                 //Triangle Fan
                 0f, 0f, 1f, 1f, 1f,
-                -.5f, -.5f, .7f, .7f, .7f,
-//                0f, -.5f, .7f, .7f, .7f,
-                .5f, -.5f, .7f, .7f, .7f,
-//                .5f, 0f, .7f, .7f, .7f,
-                .5f, .5f, .7f, .7f, .7f,
-//                0f, .5f, .7f, .7f, .7f,
-                -.5f, .5f, .7f, .7f, .7f,
-//                -.5f, 0f, .7f, .7f, .7f,
-                -.5f, -.5f, .7f, .7f, .7f,
+                -.5f, -.8f, .7f, .7f, .7f,
+                .5f, -.8f, .7f, .7f, .7f,
+                .5f, .8f, .7f, .7f, .7f,
+                -.5f, .8f, .7f, .7f, .7f,
+                -.5f, -.8f, .7f, .7f, .7f,
 
                 //center line
                 -0.5f, 0f, 1f, 0f, 0f,
                 0.5f, 0f, 1f, 0f, 0f,
 
                 //Mallets
-                0f, -0.25f, 0f, 0f, 1f,
-                0f, 0.25f, 1f, 0f, 0f
+                0f, -0.4f, 0f, 0f, 1f,
+                0f, 0.4f, 1f, 0f, 0f
         };
 
         vertexData = ByteBuffer.allocateDirect(tableVertices.length * BYTES_PER_FLOAT)
@@ -151,18 +148,16 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
     public void onDrawFrame(GL10 gl) {
         glClear(GL_COLOR_BUFFER_BIT);
 
+        glUniformMatrix4fv(uMatrixLocation, 1, false, projectionMatrix, 0);
+
         //绘制桌面
         glDrawArrays(GL_TRIANGLE_FAN, 0, 6);
-//        glDrawArrays(GL_TRIANGLE_FAN, 0, 10);
 
         //绘制分隔线
         glDrawArrays(GL_LINES, 6, 2);
-//        glDrawArrays(GL_LINES, 10, 2);
 
         //绘制木锤
         glDrawArrays(GL_POINTS, 8, 1);
         glDrawArrays(GL_POINTS, 9, 1);
-//        glDrawArrays(GL_POINTS, 12, 1);
-//        glDrawArrays(GL_POINTS, 13, 1);
     }
 }
