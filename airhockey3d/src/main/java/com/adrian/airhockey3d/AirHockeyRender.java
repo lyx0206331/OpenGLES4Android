@@ -5,6 +5,7 @@ import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 
 import com.adrian.airhockey3d.util.LoggerConfig;
+import com.adrian.airhockey3d.util.MatrixHelper;
 import com.adrian.airhockey3d.util.ShaderHelper;
 import com.adrian.airhockey3d.util.TextResourceReader;
 
@@ -37,6 +38,7 @@ import static android.opengl.GLES20.glViewport;
 
 public class AirHockeyRender implements GLSurfaceView.Renderer {
 
+    private final float[] modelMatrix = new float[16];
     private static final String U_MATRIX = "u_Matrix";
     private final float[] projectionMatrix = new float[16];
     private int uMatrixLocation;
@@ -118,13 +120,14 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
     public void onSurfaceChanged(GL10 gl, int width, int height) {
         glViewport(0, 0, width, height);
 
-        final float aspectRatio = width > height ? (float) width / (float) height : (float) height / (float) width;
+        //用45度视野创建一个透视投影，z值为-1到-10。默认z在0位置,需要把坐标移动-1到-10以内才可见
+        MatrixHelper.perspectiveM(projectionMatrix, 45, (float) width / (float) height, 1f, 10f);
+//        Matrix.perspectiveM(projectionMatrix, 0, 45, (float)width/(float)height, 1f, 10f);
 
-        if (width > height) { //landscape
-            Matrix.orthoM(projectionMatrix, 0, -aspectRatio, aspectRatio, -1f, 1f, -1f, 1f);
-        } else {    //portrait or square
-            Matrix.orthoM(projectionMatrix, 0, -1f, 1f, -aspectRatio, aspectRatio, -1f, 1f);
-        }
+        //设置模型矩阵为单位矩阵
+        Matrix.setIdentityM(modelMatrix, 0);
+        //坐标沿z轴负方向移动2个单位
+        Matrix.translateM(modelMatrix, 0, 0f, 0f, -2f);
     }
 
     @Override
