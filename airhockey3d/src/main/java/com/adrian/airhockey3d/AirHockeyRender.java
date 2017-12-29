@@ -127,7 +127,14 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
         //设置模型矩阵为单位矩阵
         Matrix.setIdentityM(modelMatrix, 0);
         //坐标沿z轴负方向移动2个单位
-        Matrix.translateM(modelMatrix, 0, 0f, 0f, -2f);
+        Matrix.translateM(modelMatrix, 0, 0f, 0f, -2.5f);
+        //绕X轴旋转-60度
+        Matrix.rotateM(modelMatrix, 0, -60f, 1f, 0f, 0f);
+
+        final float[] temp = new float[16];
+        //投影矩阵乘以模型矩阵
+        Matrix.multiplyMM(temp, 0, projectionMatrix, 0, modelMatrix, 0);
+        System.arraycopy(temp, 0, projectionMatrix, 0, temp.length);
     }
 
     @Override
