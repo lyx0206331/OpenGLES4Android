@@ -3,19 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/OpenGLES.iml" filepath="$PROJECT_DIR$/OpenGLES.iml" />
-      <module fileurl="file://E:\Android\StudioProjects\OpenGLES\OpenGLES.iml" filepath="E:\Android\StudioProjects\OpenGLES\OpenGLES.iml" />
       <module fileurl="file://$PROJECT_DIR$/airhockey1/airhockey1.iml" filepath="$PROJECT_DIR$/airhockey1/airhockey1.iml" />
-      <module fileurl="file://E:\Android\StudioProjects\OpenGLES\airhockey1\airhockey1.iml" filepath="E:\Android\StudioProjects\OpenGLES\airhockey1\airhockey1.iml" />
       <module fileurl="file://$PROJECT_DIR$/airhockey2/airhockey2.iml" filepath="$PROJECT_DIR$/airhockey2/airhockey2.iml" />
-      <module fileurl="file://E:\Android\StudioProjects\OpenGLES\airhockey2\airhockey2.iml" filepath="E:\Android\StudioProjects\OpenGLES\airhockey2\airhockey2.iml" />
       <module fileurl="file://$PROJECT_DIR$/airhockey3d/airhockey3d.iml" filepath="$PROJECT_DIR$/airhockey3d/airhockey3d.iml" />
-      <module fileurl="file://E:\Android\StudioProjects\OpenGLES\airhockey3d\airhockey3d.iml" filepath="E:\Android\StudioProjects\OpenGLES\airhockey3d\airhockey3d.iml" />
       <module fileurl="file://$PROJECT_DIR$/airhockeyortho/airhockeyortho.iml" filepath="$PROJECT_DIR$/airhockeyortho/airhockeyortho.iml" />
-      <module fileurl="file://E:\Android\StudioProjects\OpenGLES\airhockeyortho\airhockeyortho.iml" filepath="E:\Android\StudioProjects\OpenGLES\airhockeyortho\airhockeyortho.iml" />
       <module fileurl="file://$PROJECT_DIR$/airhockeytextured/airhockeytextured.iml" filepath="$PROJECT_DIR$/airhockeytextured/airhockeytextured.iml" />
-      <module fileurl="file://E:\Android\StudioProjects\OpenGLES\airhockeytextured\airhockeytextured.iml" filepath="E:\Android\StudioProjects\OpenGLES\airhockeytextured\airhockeytextured.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://E:\Android\StudioProjects\OpenGLES\app\app.iml" filepath="E:\Android\StudioProjects\OpenGLES\app\app.iml" />
     </modules>
   </component>
 </project>
