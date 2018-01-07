@@ -1,5 +1,3 @@
-#version 120
-
 precision mediump float;
 
 //此变量接收实际的纹理数据， sampler2D为二维纹理数据的数组

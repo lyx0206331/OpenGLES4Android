@@ -21,7 +21,7 @@ public class ColorShaderProgram extends ShaderProgram {
     private final int aPositionLocation;
     private final int aColorLocation;
 
-    protected ColorShaderProgram(Context context) {
+    public ColorShaderProgram(Context context) {
         super(context, R.raw.simple_vertex_shader, R.raw.simple_fragment_shader);
 
         //Retrieve uniform locations for the shader program.

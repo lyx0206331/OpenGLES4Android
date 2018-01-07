@@ -26,7 +26,7 @@ public class TextureShaderProgram extends ShaderProgram {
     private final int aPositionLocation;
     private final int aTextureCoordinatesLocation;
 
-    protected TextureShaderProgram(Context context) {
+    public TextureShaderProgram(Context context) {
         super(context, R.raw.textrue_vertex_shader, R.raw.texture_fragment_shader);
 
         //Retrieve uniform locations for the shader program.
