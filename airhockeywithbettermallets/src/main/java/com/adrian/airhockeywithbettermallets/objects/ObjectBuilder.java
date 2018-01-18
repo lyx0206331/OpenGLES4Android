@@ -139,4 +139,41 @@ public class ObjectBuilder {
 
         return builder.build();
     }
+
+    /**
+     * 生成一个木槌
+     * 手柄的高度占整体高度的75%，基部高度占整体高度的25%。手柄宽度占整体宽度的1/3。
+     *
+     * @param center
+     * @param radius
+     * @param height
+     * @param numPoints
+     * @return
+     */
+    static GeneratedData createMallet(Geometry.Point center, float radius, float height, int numPoints) {
+        int size = sizeOfCircleInVertices(numPoints) * 2 + sizeOfOpenCylinderInVertices(numPoints) * 2;
+
+        ObjectBuilder builder = new ObjectBuilder(size);
+
+        //First, generate the mallet base.
+        float baseHeight = height * .25f;
+
+        Geometry.Circle baseCircle = new Geometry.Circle(center.translateY(-baseHeight), radius);
+        Geometry.Cylinder baseCylinder = new Geometry.Cylinder(baseCircle.center.translateY(-baseHeight / 2f), radius, baseHeight);
+
+        builder.appendCircle(baseCircle, numPoints);
+        builder.appendOpenCylinder(baseCylinder, numPoints);
+
+        //Second, generate the mallet handle.
+        float handleHeight = height * .75f;
+        float handleRadius = radius / 3f;
+
+        Geometry.Circle handleCircle = new Geometry.Circle(center.translateY(height / 2f), handleRadius);
+        Geometry.Cylinder handleCylinder = new Geometry.Cylinder(handleCircle.center.translateY(-handleHeight / 2f), handleRadius, handleHeight);
+
+        builder.appendCircle(handleCircle, numPoints);
+        builder.appendOpenCylinder(handleCylinder, numPoints);
+
+        return builder.build();
+    }
 }
