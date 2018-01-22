@@ -33,6 +33,7 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
 
     private Context context;
 
+    //视图矩阵
     private final float[] viewMatrix = new float[16];
     private final float[] viewProjectionMatrix = new float[16];
     private final float[] modelViewProjectionMatrix = new float[16];
@@ -69,11 +70,13 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
+        //Set the OpenGL viewport to fill the entire surface.
         glViewport(0, 0, width, height);
 
         //用45度视野创建一个透视投影，z值为-1到-10。默认z在0位置,需要把坐标移动-1到-10以内才可见
         MatrixHelper.perspectiveM(projectionMatrix, 45, (float) width / (float) height, 1f, 10f);
 //        Matrix.perspectiveM(projectionMatrix, 0, 45, (float)width/(float)height, 1f, 10f);
+        //创建视图矩阵
         setLookAtM(viewMatrix, 0, 0f, 1.2f, 2.2f, 0f, 0f, 0f, 0f, 1f, 0f);
     }
 
