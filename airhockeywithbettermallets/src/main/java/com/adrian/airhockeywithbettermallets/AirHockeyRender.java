@@ -9,6 +9,7 @@ import com.adrian.airhockeywithbettermallets.objects.Puck;
 import com.adrian.airhockeywithbettermallets.objects.Table;
 import com.adrian.airhockeywithbettermallets.programs.ColorShaderProgram;
 import com.adrian.airhockeywithbettermallets.programs.TextureShaderProgram;
+import com.adrian.airhockeywithbettermallets.util.Geometry;
 import com.adrian.airhockeywithbettermallets.util.MatrixHelper;
 import com.adrian.airhockeywithbettermallets.util.TextureHelper;
 
@@ -50,6 +51,9 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
 
     private int texture;
 
+    private boolean malletPressed = false;
+    private Geometry.Point blueMalletPosition;
+
     public AirHockeyRender(Context context) {
         this.context = context;
     }
@@ -66,6 +70,8 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
         colorProgram = new ColorShaderProgram(context);
 
         texture = TextureHelper.loadTexture(context, R.drawable.air_hockey_surface);
+
+        blueMalletPosition = new Geometry.Point(0f, mallet.height / 2f, .4f);
     }
 
     @Override
@@ -124,6 +130,14 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
         setIdentityM(modelMatrix, 0);
         translateM(modelMatrix, 0, x, y, z);
         multiplyMM(modelViewProjectionMatrix, 0, viewProjectionMatrix, 0, modelMatrix, 0);
+    }
+
+    public void handleTouchPress(float normalizedX, float normalizedY) {
+
+    }
+
+    public void handleTouchDrag(float normalizedX, float normalizedY) {
+
     }
 
 }
