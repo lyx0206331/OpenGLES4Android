@@ -1,17 +1,17 @@
-package com.adrian.airhockeywithbettermallets;
+package com.adrian.airhockeytouch;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;
-import android.opengl.Matrix;
 
-import com.adrian.airhockeywithbettermallets.objects.Mallet;
-import com.adrian.airhockeywithbettermallets.objects.Puck;
-import com.adrian.airhockeywithbettermallets.objects.Table;
-import com.adrian.airhockeywithbettermallets.programs.ColorShaderProgram;
-import com.adrian.airhockeywithbettermallets.programs.TextureShaderProgram;
-import com.adrian.airhockeywithbettermallets.util.Geometry;
-import com.adrian.airhockeywithbettermallets.util.MatrixHelper;
-import com.adrian.airhockeywithbettermallets.util.TextureHelper;
+
+import com.adrian.airhockeytouch.objects.Mallet;
+import com.adrian.airhockeytouch.objects.Puck;
+import com.adrian.airhockeytouch.objects.Table;
+import com.adrian.airhockeytouch.programs.ColorShaderProgram;
+import com.adrian.airhockeytouch.programs.TextureShaderProgram;
+import com.adrian.airhockeytouch.util.Geometry;
+import com.adrian.airhockeytouch.util.MatrixHelper;
+import com.adrian.airhockeytouch.util.TextureHelper;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -130,6 +130,14 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
         setIdentityM(modelMatrix, 0);
         translateM(modelMatrix, 0, x, y, z);
         multiplyMM(modelViewProjectionMatrix, 0, viewProjectionMatrix, 0, modelMatrix, 0);
+    }
+
+    public void handleTouchPress(float normalizedX, float normalizedY) {
+
+    }
+
+    public void handleTouchDrag(float normalizedX, float normalizedY) {
+
     }
 
 }
