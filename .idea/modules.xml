@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/airhockey3d/airhockey3d.iml" filepath="$PROJECT_DIR$/airhockey3d/airhockey3d.iml" />
       <module fileurl="file://$PROJECT_DIR$/airhockeyortho/airhockeyortho.iml" filepath="$PROJECT_DIR$/airhockeyortho/airhockeyortho.iml" />
       <module fileurl="file://$PROJECT_DIR$/airhockeytextured/airhockeytextured.iml" filepath="$PROJECT_DIR$/airhockeytextured/airhockeytextured.iml" />
+      <module fileurl="file://$PROJECT_DIR$/airhockeytouch/airhockeytouch.iml" filepath="$PROJECT_DIR$/airhockeytouch/airhockeytouch.iml" />
       <module fileurl="file://$PROJECT_DIR$/airhockeywithbettermallets/airhockeywithbettermallets.iml" filepath="$PROJECT_DIR$/airhockeywithbettermallets/airhockeywithbettermallets.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

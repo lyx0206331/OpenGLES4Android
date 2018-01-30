@@ -1,1 +1,1 @@
-include ':app', ':airhockey1', ':airhockey2', ':airhockeyortho', ':airhockey3d', ':airhockeytextured', ':airhockeywithbettermallets'
+include ':app', ':airhockey1', ':airhockey2', ':airhockeyortho', ':airhockey3d', ':airhockeytextured', ':airhockeywithbettermallets', ':airhockeytouch'
