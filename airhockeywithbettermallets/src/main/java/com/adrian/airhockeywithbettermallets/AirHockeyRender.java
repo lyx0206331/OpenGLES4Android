@@ -51,9 +51,6 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
 
     private int texture;
 
-    private boolean malletPressed = false;
-    private Geometry.Point blueMalletPosition;
-
     public AirHockeyRender(Context context) {
         this.context = context;
     }
@@ -70,8 +67,6 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
         colorProgram = new ColorShaderProgram(context);
 
         texture = TextureHelper.loadTexture(context, R.drawable.air_hockey_surface);
-
-        blueMalletPosition = new Geometry.Point(0f, mallet.height / 2f, .4f);
     }
 
     @Override
