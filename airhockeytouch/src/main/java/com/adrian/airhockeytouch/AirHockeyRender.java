@@ -96,6 +96,7 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
         glClear(GL_COLOR_BUFFER_BIT);
 
         multiplyMM(viewProjectionMatrix, 0, projectionMatrix, 0, viewMatrix, 0);
+        //创建反转矩阵，取消视图矩阵和投影矩阵
         invertM(invertedViewProjectionMatrix, 0, viewProjectionMatrix, 0);
 
         //Draw the table.
@@ -140,7 +141,7 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
     public void handleTouchPress(float normalizedX, float normalizedY) {
         Geometry.Ray ray = convertNormalized2DPointToRay(normalizedX, normalizedY);
 
-        //Now test if this ray intervsects with the mallet by creating a bounding sphere that wraps the mallet.
+        //Now test if this ray intersects with the mallet by creating a bounding sphere that wraps the mallet.
         Geometry.Sphere malletBoundingSphere = new Geometry.Sphere(
                 new Geometry.Point(
                         blueMalletPosition.x, blueMalletPosition.y, blueMalletPosition.z
