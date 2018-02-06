@@ -152,7 +152,14 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
     }
 
     public void handleTouchDrag(float normalizedX, float normalizedY) {
-
+        if (malletPressed) {
+            Geometry.Ray ray = convertNormalized2DPointToRay(normalizedX, normalizedY);
+            //Define a plane representing our air hockey table.
+            Geometry.Plane plane = new Geometry.Plane(new Geometry.Point(0, 0, 0), new Geometry.Vector(0, 1, 0));
+            //Find out where the touched point intersects the plane representing our table.We'll move the mallet along this plane.
+            Geometry.Point touchedPoint = Geometry.intersectionPoint(ray, plane);
+            blueMalletPosition = new Geometry.Point(touchedPoint.x, mallet.height / 2f, touchedPoint.z);
+        }
     }
 
     private Geometry.Ray convertNormalized2DPointToRay(float normalizedX, float normalizedY) {
