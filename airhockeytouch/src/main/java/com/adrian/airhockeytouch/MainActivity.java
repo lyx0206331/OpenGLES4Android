@@ -10,13 +10,21 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import com.adrian.basemodule.activitiy.BaseActivity;
+
+public class MainActivity extends BaseActivity {
     private GLSurfaceView glSurfaceView;
     private boolean rendererSet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+//        setContentView(glSurfaceView);
+    }
+
+    @Override
+    protected void initVariables() {
         glSurfaceView = new GLSurfaceView(this);
 
         ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
@@ -64,7 +72,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        setContentView(glSurfaceView);
+    }
+
+    @Override
+    protected void initViews() {
+
+    }
+
+    @Override
+    protected void loadData() {
+
+    }
+
+    @Override
+    protected Object getLayoutRes() {
+        return glSurfaceView;
     }
 
     @Override

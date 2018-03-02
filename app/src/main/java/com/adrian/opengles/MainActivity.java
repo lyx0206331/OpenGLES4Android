@@ -9,7 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import com.adrian.basemodule.activitiy.BaseActivity;
+
+public class MainActivity extends BaseActivity {
 
     private GLSurfaceView glSurfaceView;
     private boolean rendererSet = false;
@@ -17,6 +19,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void initVariables() {
+
         glSurfaceView = new GLSurfaceView(this);
 
         ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
@@ -37,7 +44,21 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "This device does not support OpenGL ES 2.0", Toast.LENGTH_SHORT).show();
             return;
         }
-        setContentView(glSurfaceView);
+
+    }
+
+    @Override
+    protected void initViews() {
+    }
+
+    @Override
+    protected void loadData() {
+
+    }
+
+    @Override
+    protected Object getLayoutRes() {
+        return glSurfaceView;
     }
 
     @Override
